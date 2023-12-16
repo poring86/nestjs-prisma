@@ -1,4 +1,4 @@
-### Create Category
+### Create user
 POST http://localhost:3000/users
 Content-Type: application/json
 
@@ -7,5 +7,29 @@ Content-Type: application/json
   "description": "Description 1"
 }
 
-###
+### Get users list
 GET http://localhost:3000/users
+
+### Get a user
+GET http://localhost:3000/users/1
+
+### Replace a user
+PUT http://localhost:3000/users/1
+Content-Type: application/json
+
+{
+  "name": "Category 1",
+  "description": "Description 1"
+}
+
+### Update a user
+PATCH http://localhost:3000/users/1
+Content-Type: application/json
+
+{
+  "name": "Category 1",
+  "description": "Description 1"
+}
+
+### Delete a user
+DELETE  http://localhost:3000/users/1
