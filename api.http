@@ -3,8 +3,9 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-  "name": "Category 1",
-  "description": "Description 1"
+  "email": "test@test.com",
+  "name": "test",
+  "password": "Description 1"
 }
 
 ### Get users list
@@ -18,8 +19,9 @@ PUT http://localhost:3000/users/1
 Content-Type: application/json
 
 {
-  "name": "Category 1",
-  "description": "Description 1"
+  "email": "test@test.com",
+  "name": "test",
+  "password": "Description 1"
 }
 
 ### Update a user
@@ -27,8 +29,8 @@ PATCH http://localhost:3000/users/1
 Content-Type: application/json
 
 {
-  "name": "Category 1",
-  "description": "Description 1"
+  "email": "test@test.com",
+  "name": "test"
 }
 
 ### Delete a user

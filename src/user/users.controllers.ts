@@ -7,12 +7,16 @@ import {
   Put,
   Patch,
   Delete,
+  ParseIntPipe,
 } from '@nestjs/common';
+import { CreateUserDTO } from './dto/create-user.dto';
+import { UpdatePutUserDTO } from './dto/update-put-user.dto';
+import { UpdatePatchUserDTO } from './dto/update-patch-user.dto';
 
 @Controller('users')
 export class UserController {
   @Post()
-  async create(@Body() body) {
+  async create(@Body() body: CreateUserDTO) {
     return body;
   }
 
@@ -27,7 +31,7 @@ export class UserController {
   }
 
   @Put(':id')
-  async update(@Param() params, @Body() body) {
+  async update(@Param() params, @Body() body: UpdatePutUserDTO) {
     return {
       method: 'put',
       body,
@@ -36,7 +40,7 @@ export class UserController {
   }
 
   @Patch(':id')
-  async patch(@Param() params, @Body() body) {
+  async patch(@Param() params, @Body() body: UpdatePatchUserDTO) {
     return {
       method: 'patch',
       body,
@@ -45,9 +49,9 @@ export class UserController {
   }
 
   @Delete(':id')
-  async delete(@Param() params) {
+  async delete(@Param('id', ParseIntPipe) id: string) {
     return {
-      params,
+      id,
     };
   }
 }
