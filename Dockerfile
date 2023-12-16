@@ -1,10 +1,14 @@
 FROM node:20.5.1-slim
 
-RUN npm install -g @nestjs/cli@10.1.17
+RUN apt-get update -y && apt-get install -y openssl
 
-USER node
+RUN npm install -g @nestjs/cli@10.1.17 prisma
+
+USER root
 
 WORKDIR /home/node/app
+
+# RUN chmod -R 777 ./
 
 COPY package.json .
 
@@ -12,6 +16,6 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 80
+EXPOSE 3000
 
 CMD ["npm", "run", "start:dev"]
