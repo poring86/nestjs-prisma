@@ -29,26 +29,25 @@ export class UserController {
   }
 
   @Get(':id')
-  async show(@Param() param) {
-    return { user: {}, param };
+  async show(@Param('id', ParseIntPipe) id: number) {
+    return this.userService.show(id);
   }
 
   @Put(':id')
-  async update(@Param() params, @Body() body: UpdatePutUserDTO) {
-    return {
-      method: 'put',
-      body,
-      params,
-    };
+  async update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() data: UpdatePutUserDTO,
+  ) {
+    console.log(data);
+    return this.userService.update(id, data);
   }
 
   @Patch(':id')
-  async patch(@Param() params, @Body() body: UpdatePatchUserDTO) {
-    return {
-      method: 'patch',
-      body,
-      params,
-    };
+  async updatePartial(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() data: UpdatePatchUserDTO,
+  ) {
+    return this.userService.updatePartial(id, data);
   }
 
   @Delete(':id')
