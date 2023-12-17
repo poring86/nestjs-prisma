@@ -12,7 +12,7 @@ Content-Type: application/json
 GET http://localhost:3000/users
 
 ### Get a user
-GET http://localhost:3000/users/1
+GET http://localhost:3000/users/100
 
 ### Replace a user
 PUT http://localhost:3000/users/9
@@ -21,7 +21,8 @@ Content-Type: application/json
 {
   "email": "test@test.com",
   "name": "test",
-  "password": "Description 1"
+  "password": "Description 1",
+  "birthAt": "1995-10-10"
 }
 
 ### Update a user
