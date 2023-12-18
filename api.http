@@ -3,9 +3,9 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-  "email": "fulano@test.com",
-  "name": "fulano",
-  "password": "dq3dq3dq3eq3e"
+  "email": "matheus@test.com",
+  "name": "Matheus",
+  "password": "1234567"
 }
 
 ### Get users list
@@ -26,14 +26,24 @@ Content-Type: application/json
 }
 
 ### Update a user
-PATCH http://localhost:3000/users/9
+PATCH http://localhost:3000/users/12
 Content-Type: application/json
 
 {
-  "email": "test@test.com",
-  "name": "test",
-  "birthAt": "1995-10-10"
+  "password": "123456789"
 }
 
 ### Delete a user
 DELETE  http://localhost:3000/users/7
+
+
+# Auth Module
+
+### Login
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "matheus@test.com",
+  "password": "123456789"
+}
