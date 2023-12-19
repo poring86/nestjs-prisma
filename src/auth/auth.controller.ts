@@ -13,7 +13,6 @@ export class AuthController {
 
   @Post('login')
   async login(@Body() { email, password }: AuthLoginDTO) {
-    console.log('passou aqui');
     return this.authService.login(email, password);
   }
 

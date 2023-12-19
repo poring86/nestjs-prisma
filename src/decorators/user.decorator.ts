@@ -8,9 +8,6 @@ export const User = createParamDecorator(
   (data: string, context: ExecutionContext) => {
     const request = context.switchToHttp().getRequest();
 
-    console.log('data', data);
-    console.log('request', request);
-
     if (request.user) {
       if (data) {
         return request.user[data];
