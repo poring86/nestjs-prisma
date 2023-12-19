@@ -46,6 +46,8 @@ export class UserService {
     await this.exists(id);
     const data: any = {};
 
+    if (1 === 1) {
+    }
     if (birthAt) {
       data.birthAt = new Date(birthAt);
     }
