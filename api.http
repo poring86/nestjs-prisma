@@ -1,5 +1,7 @@
+@baseurl = http://localhost:3000
+
 ### Create user
-POST http://localhost:3000/users
+POST {{baseurl}}/users
 Content-Type: application/json
 
 {
@@ -9,13 +11,13 @@ Content-Type: application/json
 }
 
 ### Get users list
-GET http://localhost:3000/users
+GET {{baseurl}}/users
 
 ### Get a user
-GET http://localhost:3000/users/9
+GET {{baseurl}}/users/9
 
 ### Replace a user
-PUT http://localhost:3000/users/9
+PUT {{baseurl}}/users/9
 Content-Type: application/json
 
 {
@@ -26,7 +28,7 @@ Content-Type: application/json
 }
 
 ### Update a user
-PATCH http://localhost:3000/users/12
+PATCH {{baseurl}}/users/12
 Content-Type: application/json
 
 {
@@ -34,13 +36,13 @@ Content-Type: application/json
 }
 
 ### Delete a user
-DELETE  http://localhost:3000/users/7
+DELETE  {{baseurl}}/users/7
 
 
 # Auth Module
 
 ### Login
-POST http://localhost:3000/auth/login
+POST {{baseurl}}/auth/login
 Content-Type: application/json
 
 {
@@ -49,9 +51,8 @@ Content-Type: application/json
 }
 
 
-### Login
+### Me
 
-POST http://localhost:3000/auth/me
+POST {{baseurl}}/auth/me
 Content-Type: application/json
-
-{"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJNYXRoZXVzIiwiZW1haWwiOiJtYXRoZXVzQHRlc3QuY29tIiwiaWF0IjoxNzAyOTM5NjAwLCJleHAiOjE3MDM1NDQ0MDAsImF1ZCI6InVzZXJzIiwiaXNzIjoibG9naW4iLCJzdWIiOiIxMiJ9.IWkxi1W2a6icB1-207zgtMMIPFlCO7wEXVKGZmttuhk"}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJNYXRoZXVzIiwiZW1haWwiOiJtYXRoZXVzQHRlc3QuY29tIiwiaWF0IjoxNzAyOTQ3Njc0LCJleHAiOjE3MDM1NTI0NzQsImF1ZCI6InVzZXJzIiwiaXNzIjoibG9naW4iLCJzdWIiOiIxMiJ9.7bq7JATMYT48NzEQ1neduaQHGihNQpj140zee-rB5S8

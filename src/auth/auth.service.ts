@@ -37,8 +37,7 @@ export class AuthService {
     };
   }
 
-  async checkToken(token: string) {
-    console.log('passou aqui');
+  checkToken(token: string) {
     try {
       return this.jwtService.verify(token, {
         audience: this.audience,
@@ -49,9 +48,9 @@ export class AuthService {
     }
   }
 
-  async isValidToken(token: string) {
+  isValidToken(token: string) {
     try {
-      await this.checkToken(token);
+      this.checkToken(token);
       return true;
     } catch (e) {
       return false;

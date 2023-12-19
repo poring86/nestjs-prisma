@@ -4,7 +4,7 @@ import {
   NestModule,
   RequestMethod,
 } from '@nestjs/common';
-import { UserController } from './users.controllers';
+import { UserController } from './users.controller';
 import { PrismaModule } from 'src/prisma/prisma.module';
 import { UserService } from './user.service';
 import { UserIdCheckMiddleware } from 'src/middlewares/user-id-check.middleware';
