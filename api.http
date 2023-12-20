@@ -1,24 +1,29 @@
 @baseurl = http://localhost:3000
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJNYXRoZXVzIiwiZW1haWwiOiJtYXRoZXVzQHRlc3QuY29tIiwiaWF0IjoxNzAzMDI5MDQ5LCJleHAiOjE3MDM2MzM4NDksImF1ZCI6InVzZXJzIiwiaXNzIjoibG9naW4iLCJzdWIiOiIxMiJ9.YNtezjkJc-RmVDcZE4i38kusdETFLJ7m8SQsJf6S-yY
 
 ### Create user
 POST {{baseurl}}/users
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "email": "matheus@test.com",
-  "name": "Matheus",
+  "email": "bla@bla.com",
+  "name": "bla",
   "password": "1234567"
 }
 
 ### Get users list
 GET {{baseurl}}/users
+Authorization: Bearer {{token}}
 
 ### Get a user
 GET {{baseurl}}/users/9
+Authorization: Bearer {{token}}
 
 ### Replace a user
 PUT {{baseurl}}/users/9
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "email": "test@test.com",
@@ -30,6 +35,7 @@ Content-Type: application/json
 ### Update a user
 PATCH {{baseurl}}/users/12
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "password": "123456789"
@@ -37,6 +43,7 @@ Content-Type: application/json
 
 ### Delete a user
 DELETE  {{baseurl}}/users/7
+Authorization: Bearer {{token}}
 
 
 # Auth Module
@@ -44,6 +51,7 @@ DELETE  {{baseurl}}/users/7
 ### Login
 POST {{baseurl}}/auth/login
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "email": "matheus@test.com",
@@ -55,4 +63,4 @@ Content-Type: application/json
 
 POST {{baseurl}}/auth/me
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJNYXRoZXVzIiwiZW1haWwiOiJtYXRoZXVzQHRlc3QuY29tIiwiaWF0IjoxNzAyOTQ3Njc0LCJleHAiOjE3MDM1NTI0NzQsImF1ZCI6InVzZXJzIiwiaXNzIjoibG9naW4iLCJzdWIiOiIxMiJ9.7bq7JATMYT48NzEQ1neduaQHGihNQpj140zee-rB5S8
+Authorization: Bearer {{token}}
