@@ -21,15 +21,16 @@ GET {{baseurl}}/users/9
 Authorization: Bearer {{token}}
 
 ### Replace a user
-PUT {{baseurl}}/users/9
+PUT {{baseurl}}/users/12
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "email": "test@test.com",
-  "name": "test",
-  "password": "Description 1",
-  "birthAt": "1995-10-10"
+  "email": "matheus@test.com",
+  "name": "Matheus",
+  "password": "123456",
+  "birthAt": "1995-10-10",
+  "role": 2
 }
 
 ### Update a user
@@ -55,7 +56,7 @@ Authorization: Bearer {{token}}
 
 {
   "email": "matheus@test.com",
-  "password": "123456789"
+  "password": "123456"
 }
 
 
