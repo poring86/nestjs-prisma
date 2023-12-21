@@ -4,6 +4,7 @@ import { AuthController } from './auth.controller';
 import { PrismaModule } from 'src/prisma/prisma.module';
 import { AuthService } from './auth.service';
 import { UserModule } from 'src/user/user.module';
+import { FileModule } from 'src/file/file.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { UserModule } from 'src/user/user.module';
     }),
     PrismaModule,
     forwardRef(() => UserModule),
+    FileModule,
   ],
   controllers: [AuthController],
   providers: [AuthService],
