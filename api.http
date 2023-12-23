@@ -56,12 +56,31 @@ Authorization: Bearer {{token}}
 
 {
   "email": "matheus@test.com",
-  "password": "123456"
+  "password": "1234567"
 }
 
 
 ### Me
-
 POST {{baseurl}}/auth/me
 Content-Type: application/json
 Authorization: Bearer {{token}}
+
+
+### Forget
+POST {{baseurl}}/auth/forget
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "email": "matheus@test.com"
+}
+
+### Reset
+POST {{baseurl}}/auth/reset
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "password": "1234567",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImlhdCI6MTcwMzM0MzM3MiwiZXhwIjoxNzA1OTM1MzcyLCJhdWQiOiJ1c2VycyIsImlzcyI6ImZvcmdldCIsInN1YiI6IjEyIn0.xFDbX77ojMh4x2dSanIxavPQYKFH5RsHbVzon5aYRyE"
+}
