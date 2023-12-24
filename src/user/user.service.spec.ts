@@ -88,18 +88,19 @@ describe('UserService', () => {
     expect(response).toEqual(fakeUser[0]);
     expect(prismaService.user.findUnique).toHaveBeenCalledTimes(1);
     expect(prismaService.user.findUnique).toHaveBeenCalledWith({
-      where: { id: 1 },
+      where: { id },
     });
   });
 
   it('should update a user', async () => {
     const id = 1;
     const password = '12345678';
+    const date = '1997-10-10';
     const updateUserPayload = {
       email: 'test2@test.com',
       name: 'test2',
       password,
-      birthAt: '1997-10-10',
+      birthAt: date,
       role: 1,
     };
     const response = await userService.update(id, updateUserPayload);
@@ -112,11 +113,21 @@ describe('UserService', () => {
           email: 'test2@test.com',
           name: 'test2',
           password: expect.any(String),
-          birthAt: new Date('1997-10-10'),
+          birthAt: new Date(date),
           role: 1,
         }),
         where: { id },
       }),
     );
+  });
+
+  it('should delete a user', async () => {
+    const id = 1;
+    await userService.delete(id);
+
+    expect(prismaService.user.delete).toHaveBeenCalledTimes(1);
+    expect(prismaService.user.delete).toHaveBeenCalledWith({
+      where: { id },
+    });
   });
 });
