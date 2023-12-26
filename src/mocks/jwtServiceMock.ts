@@ -18,6 +18,6 @@ export const jwtServiceMock = {
   provide: JwtService,
   useValue: {
     sign: jest.fn().mockReturnValue(fakeJwtToken),
-    verify: jest.fn().mockReturnValue(fakeJwtPayload),
+    verify: jest.fn().mockResolvedValue(fakeJwtPayload),
   },
 };

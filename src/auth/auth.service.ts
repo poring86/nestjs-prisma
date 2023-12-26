@@ -22,7 +22,7 @@ export class AuthService {
     private readonly mailer: MailerService,
   ) {}
 
-  async createToken(user: User) {
+  createToken(user: User) {
     return {
       accessToken: this.jwtService.sign(
         {
