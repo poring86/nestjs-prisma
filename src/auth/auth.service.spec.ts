@@ -68,4 +68,16 @@ describe('AuthService', () => {
 
     expect(result).toEqual({ accessToken: fakeJwtToken });
   });
+
+  test('should check token', () => {
+    const result = authService.checkToken(fakeJwtToken);
+
+    expect(jwtService.verify).toHaveBeenCalledTimes(1);
+    expect(jwtService.verify).toHaveBeenCalledWith(fakeJwtToken, {
+      audience: fakeJwtPayload.aud,
+      issuer: fakeJwtPayload.iss,
+    });
+
+    expect(result).toEqual(fakeJwtPayload);
+  });
 });
