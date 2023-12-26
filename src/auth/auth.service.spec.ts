@@ -13,6 +13,7 @@ import { MailerService } from '@nestjs-modules/mailer';
 import { userServiceMock } from 'src/mocks/usersServiceMock';
 import { mailerServiceMock } from 'src/mocks/mailerServiceMock';
 import { fakeUsers } from 'src/mocks/fakeUsers';
+import { authRegisterDTO } from 'src/mocks/authRegisterMock';
 
 describe('AuthService', () => {
   let authService: AuthService;
@@ -79,5 +80,78 @@ describe('AuthService', () => {
     });
 
     expect(result).toEqual(fakeJwtPayload);
+  });
+
+  test('should success login', async () => {
+    const result = await authService.login(fakeUsers[1].email, '1234567');
+
+    expect(prismaService.user.findFirst).toHaveBeenCalledTimes(1);
+
+    expect(result).toEqual({ accessToken: fakeJwtToken });
+  });
+
+  test('should fail login with wrong password', async () => {
+    await expect(
+      authService.login(fakeUsers[1].email, '12345678'),
+    ).rejects.toThrow('E-mail e/ou senha incorretos.');
+
+    expect(prismaService.user.findFirst).toHaveBeenCalledTimes(1);
+
+    const spy = jest.spyOn(prismaService.user, 'findFirst');
+    expect(spy).toHaveBeenCalledTimes(1);
+  });
+
+  test('should fail login with wrong email', async () => {
+    jest
+      .spyOn(prismaService.user, 'findFirst')
+      .mockResolvedValueOnce(false as any);
+
+    await expect(
+      authService.login('wrong@test.com', '1234567'),
+    ).rejects.toThrow('E-mail e/ou senha incorretos.');
+
+    expect(prismaService.user.findFirst).toHaveBeenCalledTimes(1);
+  });
+
+  test('should success forget method', async () => {
+    const email = 'matheus@test.com';
+
+    const result = await authService.forget(email);
+
+    expect(prismaService.user.findFirst).toHaveBeenCalledTimes(1);
+    expect(prismaService.user.findFirst).toHaveBeenCalledWith({
+      where: {
+        email,
+      },
+    });
+
+    expect(result).toEqual({ success: true });
+  });
+
+  test('should success on reset method', async () => {
+    const result = await authService.reset('654321', fakeJwtToken);
+
+    expect(jwtService.verify).toHaveBeenCalledTimes(1);
+    expect(jwtService.verify).toHaveBeenCalledWith(fakeJwtToken, {
+      audience: fakeJwtPayload.aud,
+      issuer: 'forget',
+    });
+
+    expect(prismaService.user.update).toHaveBeenCalledTimes(1);
+
+    expect(result).toEqual({ accessToken: fakeJwtToken });
+  });
+
+  test('should fail on reset method with invalid token', async () => {
+    jest.spyOn(jwtService, 'verify').mockReturnValueOnce(false as any);
+
+    expect(authService.reset('654321', fakeJwtToken)).rejects.toThrow(
+      'Token é inválido',
+    );
+  });
+
+  test('should register new user', async () => {
+    const result = await authService.register(authRegisterDTO);
+    expect(result).toEqual({ accessToken: fakeJwtToken });
   });
 });
