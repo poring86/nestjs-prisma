@@ -23,7 +23,6 @@ import { AuthService } from './auth.service';
 import { AuthResetDTO } from './dto/auth-reset.dto';
 import { AuthGuard } from 'src/guards/auth.guard';
 import { User } from 'src/decorators/user.decorator';
-import { join } from 'path';
 import { FileService } from 'src/file/file.service';
 
 @Controller('auth')
@@ -74,22 +73,15 @@ export class AuthController {
     )
     photo: Express.Multer.File,
   ) {
-    const path = join(
-      __dirname,
-      '..',
-      '..',
-      'storage',
-      'photos',
-      `photo-${user.id}.png`,
-    );
+    const filename = `photo-${user.id}.jpg`;
 
     try {
-      await this.fileService.upload(photo, path);
+      await this.fileService.upload(photo, filename);
     } catch (e) {
       throw new BadRequestException(e);
     }
 
-    return { photo };
+    return photo;
   }
 
   @UseInterceptors(FilesInterceptor('files'))
