@@ -52,8 +52,6 @@ describe('User controller', () => {
   });
 
   test('list method', async () => {
-    console.log(userService);
-    console.log(userServiceMock);
     const result = await userController.list();
 
     expect(result).toEqual(fakeUsers);
