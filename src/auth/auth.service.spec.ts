@@ -1,19 +1,17 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AuthService } from './auth.service';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { prismaServiceMock } from 'src/mocks/prismaServiceMock';
 import { UserService } from 'src/user/user.service';
-import {
-  fakeJwtPayload,
-  fakeJwtToken,
-  jwtServiceMock,
-} from 'src/mocks/jwtServiceMock';
+import { jwtServiceMock } from 'src/mocks/jwtService.mock';
 import { JwtService } from '@nestjs/jwt';
 import { MailerService } from '@nestjs-modules/mailer';
-import { userServiceMock } from 'src/mocks/usersServiceMock';
-import { mailerServiceMock } from 'src/mocks/mailerServiceMock';
+import { mailerServiceMock } from 'src/mocks/mailerService.mock';
 import { fakeUsers } from 'src/mocks/fakeUsers';
-import { authRegisterDTO } from 'src/mocks/authRegisterMock';
+import { fakeJwtPayload } from 'src/mocks/fakeJwtPayload';
+import { fakeJwtToken } from 'src/mocks/fakeJwtToken';
+import { prismaServiceMock } from 'src/mocks/prismaService.mock';
+import { userServiceMock } from 'src/mocks/userService.mock';
+import { authRegisterDTO } from 'src/mocks/authRegister.mock';
 
 describe('AuthService', () => {
   let authService: AuthService;

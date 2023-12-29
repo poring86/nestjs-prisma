@@ -3,6 +3,7 @@
 /node_modules
 /.lh
 .env
+.env.test
 
 # Logs
 logs

@@ -7,7 +7,6 @@ export const userServiceMock = {
     list: jest.fn().mockResolvedValue(fakeUsers),
     show: jest.fn().mockResolvedValue(fakeUsers[0]),
     create: jest.fn().mockResolvedValue(fakeUsers[0]),
-
     update: jest.fn().mockResolvedValue(fakeUsers[0]),
     updatePartial: jest.fn().mockResolvedValue(fakeUsers[0]),
     delete: jest.fn().mockResolvedValue(true),

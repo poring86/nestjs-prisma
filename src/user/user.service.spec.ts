@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UserService } from './user.service';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { prismaServiceMock } from 'src/mocks/prismaServiceMock';
 import { fakeUsers } from 'src/mocks/fakeUsers';
+import { prismaServiceMock } from 'src/mocks/prismaService.mock';
 
 describe('UserService', () => {
   let userService: UserService;
