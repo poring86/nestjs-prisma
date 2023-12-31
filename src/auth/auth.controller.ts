@@ -24,7 +24,9 @@ import { AuthResetDTO } from './dto/auth-reset.dto';
 import { AuthGuard } from 'src/guards/auth.guard';
 import { User } from 'src/decorators/user.decorator';
 import { FileService } from 'src/file/file.service';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('auth')
 @Controller('auth')
 export class AuthController {
   constructor(
