@@ -2,12 +2,15 @@ version: '3'
 services:
   app:
     build: .
-    # command: "./.docker/start.sh"
+    entrypoint: ./.docker/entrypoint.sh
     ports:
       - 3000:3000
     volumes:
       - .:/home/node/app
     restart: always
+    depends_on:
+      mysql:
+        condition: service_healthy
   mysql:
     image: mysql:8.0.30-debian
     ports:
@@ -19,6 +22,10 @@ services:
       - ./.docker/dbdata:/var/lib/mysql:delegated
     security_opt:
       - seccomp:unconfined
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
+      timeout: 20s
+      retries: 10
     restart: always
   test-mysql:
     image: mysql:8.0.30-debian
